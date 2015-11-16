@@ -18,7 +18,8 @@ extension NSManagedObjectContext {
         do {
             try save()
             return true
-        } catch {
+        } catch let error {
+            print("Rolling back changes: \(error)")
             rollback()
             return false
         }

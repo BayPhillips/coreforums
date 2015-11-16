@@ -25,11 +25,8 @@ class CategoriesViewController: UITableViewController, ManagedObjectContextSetta
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
-        let request = Category.sortedFetchRequest
-        request.returnsObjectsAsFaults = true
-        request.fetchBatchSize = 20
-        
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+
+        let frc = NSFetchedResultsController(fetchRequest: Category.sortedFetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         let dataProvider = FetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
         dataSource = TableViewDatasource(tableView: tableView, dataProvider: dataProvider, delegate: self)
     }
@@ -54,6 +51,29 @@ class CategoriesViewController: UITableViewController, ManagedObjectContextSetta
             self.alertController?.dismissViewControllerAnimated(true, completion: nil)
         }))
         self.navigationController?.presentViewController(self.alertController!, animated: true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let category = dataSource.selectedObject else { fatalError("Couldn't select category") }
+        self.performSegueWithIdentifier("show-conversations", sender: category)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let identifier = segue.identifier else { print("no segue identifier what?"); return }
+        
+        switch identifier {
+        case "show-conversations":
+            guard let cvc = segue.destinationViewController as? ConversationsViewController else {
+                fatalError("Wrong destination view controller")
+            }
+            guard let category = sender as? Category else { fatalError("Didn't send in category") }
+            cvc.managedObjectContext = self.managedObjectContext
+            cvc.category = category
+            break
+        default:
+            break
+        }
     }
 }
 

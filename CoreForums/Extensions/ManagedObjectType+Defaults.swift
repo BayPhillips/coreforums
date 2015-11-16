@@ -17,6 +17,8 @@ extension ManagedObjectType {
     static var sortedFetchRequest: NSFetchRequest {
         let request = NSFetchRequest(entityName: entityName)
         request.sortDescriptors = defaultSortDescriptors
+        request.returnsObjectsAsFaults = true
+        request.fetchBatchSize = 20
         return request
     }
 }

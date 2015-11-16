@@ -44,12 +44,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="rhY-ss-7mI" kind="show" id="lqE-kt-ws9"/>
+                        <segue destination="rhY-ss-7mI" kind="show" identifier="show-conversations" id="lqE-kt-ws9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkb-3c-Npb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="275"/>
+            <point key="canvasLocation" x="263" y="275"/>
         </scene>
         <!--Root Navigation Controller-->
         <scene sceneID="fBm-hf-MwU">
@@ -70,18 +70,27 @@
         <!--Conversations-->
         <scene sceneID="sAT-Oj-utJ">
             <objects>
-                <tableViewController storyboardIdentifier="conversations" title="Conversations" id="rhY-ss-7mI" customClass="ConverstationsViewController" customModule="CoreForums" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="conversations" title="Conversations" id="rhY-ss-7mI" customClass="ConversationsViewController" customModule="CoreForums" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q8R-qZ-ILZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ayO-lP-1gR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" textLabel="2zp-o5-5M3" style="IBUITableViewCellStyleDefault" id="ayO-lP-1gR" customClass="ConversationTableViewCell" customModule="CoreForums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ayO-lP-1gR" id="eRb-0H-XEB">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2zp-o5-5M3">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -90,15 +99,24 @@
                             <outlet property="delegate" destination="rhY-ss-7mI" id="0Ng-WA-znq"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="Twj-6h-i8Y">
+                        <barButtonItem key="rightBarButtonItem" title="New Conversation" id="vx2-GC-RHQ">
+                            <connections>
+                                <action selector="newConversationButtonTapped" destination="rhY-ss-7mI" id="vl0-Do-b1r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="jl4-ln-LVp" kind="show" id="bdD-ng-fWZ"/>
+                        <segue destination="jl4-ln-LVp" kind="show" identifier="view-conversation" id="bdD-ng-fWZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="El6-sZ-6Mu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933" y="280"/>
         </scene>
-        <!--View Conversation View Controller-->
+        <!--Title-->
         <scene sceneID="zst-tq-10A">
             <objects>
                 <tableViewController storyboardIdentifier="view-conversation" id="jl4-ln-LVp" customClass="ViewConversationViewController" customModule="CoreForums" customModuleProvider="target" sceneMemberID="viewController">
@@ -107,12 +125,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WnR-2p-kVJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" textLabel="qss-4V-kFo" style="IBUITableViewCellStyleDefault" id="WnR-2p-kVJ" customClass="PostCell" customModule="CoreForums" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WnR-2p-kVJ" id="YCX-aS-5Iy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qss-4V-kFo">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -121,6 +148,13 @@
                             <outlet property="delegate" destination="jl4-ln-LVp" id="Ru9-vj-bHS"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="vSj-bv-UTn">
+                        <barButtonItem key="rightBarButtonItem" title="Add Reply" id="gii-DP-Yjq">
+                            <connections>
+                                <action selector="newReplyButtonTapped" destination="jl4-ln-LVp" id="dQ1-w6-sFh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P7u-qr-BuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

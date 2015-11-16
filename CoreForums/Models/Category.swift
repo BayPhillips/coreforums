@@ -27,6 +27,6 @@ extension Category: ManagedObjectType {
     }
     
     static var defaultSortDescriptors: [NSSortDescriptor] {
-        return [NSSortDescriptor(key: "order", ascending: true)]
+        return [NSSortDescriptor(key: "order", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
     }
 }
