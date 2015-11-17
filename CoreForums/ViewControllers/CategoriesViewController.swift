@@ -68,7 +68,6 @@ class CategoriesViewController: UITableViewController, ManagedObjectContextSetta
                 fatalError("Wrong destination view controller")
             }
             guard let category = sender as? Category else { fatalError("Didn't send in category") }
-            cvc.managedObjectContext = self.managedObjectContext
             cvc.category = category
             break
         default:

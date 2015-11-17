@@ -22,10 +22,17 @@ class RootNavigationController: UINavigationController, UINavigationControllerDe
         contextSettableViewController.managedObjectContext = managedObjectContext
     }
     
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        guard let contextSettableViewController = viewController as? ManagedObjectContextSettable else {
-            return
+    override func pushViewController(viewController: UIViewController, animated: Bool) {
+        if let contextSettableViewController = viewController as? ManagedObjectContextSettable {
+            contextSettableViewController.managedObjectContext = managedObjectContext
         }
-        contextSettableViewController.managedObjectContext = managedObjectContext
+        super.pushViewController(viewController, animated: animated)
+    }
+    
+    override func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
+        if let contextSettableViewController = viewControllerToPresent as? ManagedObjectContextSettable {
+            contextSettableViewController.managedObjectContext = managedObjectContext
+        }
+        super.presentViewController(viewControllerToPresent, animated: flag, completion: completion)
     }
 }

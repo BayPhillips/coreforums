@@ -10,8 +10,9 @@ import UIKit
 import CoreData
 
 class PostCell: UITableViewCell, ConfigurableCell {
-    func configureForObject(object: Post) {
-        self.textLabel?.text = object.body
+    func configureForObject(post: Post) {
+        self.textLabel?.text = post.body
+        self.detailTextLabel?.text = post.user.username
     }
 }
 

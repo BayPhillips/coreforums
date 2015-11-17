@@ -12,6 +12,7 @@ import CoreData
 class ConversationTableViewCell: UITableViewCell, ConfigurableCell {
     func configureForObject(object: Conversation) {
         self.textLabel?.text = object.title
+        self.detailTextLabel?.text = object.creator.username
     }
 }
 
@@ -75,7 +76,6 @@ class ConversationsViewController: UITableViewController, ManagedObjectContextSe
             }
             guard let conversation = sender as? Conversation else { fatalError("Didn't pass in conversation") }
             vcvc.conversation = conversation
-            vcvc.managedObjectContext = managedObjectContext
             break
         default:
             break

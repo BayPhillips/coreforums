@@ -12,7 +12,7 @@ import CoreData
 class Post: ManagedObject {
     @NSManaged var body: String
     @NSManaged var conversation: Conversation
-    @NSManaged var user: User?
+    @NSManaged var user: User
     @NSManaged var timeCreated: NSDate
     @NSManaged var timeUpdated: NSDate
     
