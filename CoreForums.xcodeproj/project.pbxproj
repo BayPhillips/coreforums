@@ -23,6 +23,7 @@
 		614E587A1BF7CA4A00103DC2 /* ViewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58791BF7CA4A00103DC2 /* ViewConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		614E58941BF7E94300103DC2 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58931BF7E94300103DC2 /* RootNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
 		61605ED51C0139340057992E /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61605ED41C0139340057992E /* Persistence.framework */; };
+		61605F181C013DFF0057992E /* MediaContent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61605F171C013DFF0057992E /* MediaContent.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		614E58791BF7CA4A00103DC2 /* ViewConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConversationViewController.swift; sourceTree = "<group>"; };
 		614E58931BF7E94300103DC2 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		61605ED41C0139340057992E /* Persistence.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Persistence.framework; path = "../../../Persistence/build/Debug-iphoneos/Persistence.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61605F171C013DFF0057992E /* MediaContent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaContent.framework; path = "../../../MediaContent/build/Debug-iphoneos/MediaContent.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61605F181C013DFF0057992E /* MediaContent.framework in Frameworks */,
 				61605ED51C0139340057992E /* Persistence.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +175,7 @@
 		61605ED61C0139B10057992E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61605F171C013DFF0057992E /* MediaContent.framework */,
 				61605ED41C0139340057992E /* Persistence.framework */,
 			);
 			path = Frameworks;
@@ -459,6 +463,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Persistence/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/MediaContent/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = CoreForums/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -474,6 +479,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Persistence/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/MediaContent/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = CoreForums/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

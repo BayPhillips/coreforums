@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Persistence
+import MediaContent
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,7 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Category.self,
             Conversation.self,
             Post.self,
-            User.self
+            User.self,
+            MediaContent.Image.self
         ])
 
         managedObjectContext = contexts[NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType]

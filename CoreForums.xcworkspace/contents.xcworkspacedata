@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MediaContent/MediaContent.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Persistence/Persistence.xcodeproj">
    </FileRef>
    <FileRef

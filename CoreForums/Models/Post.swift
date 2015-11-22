@@ -9,11 +9,13 @@
 import Foundation
 import CoreData
 import Persistence
+import MediaContent
 
 class Post: ManagedObject {
     @NSManaged var body: String
     @NSManaged var conversation: Conversation
     @NSManaged var user: User
+    @NSManaged var images: Set<Image>
     @NSManaged var timeCreated: NSDate
     @NSManaged var timeUpdated: NSDate
     
@@ -22,6 +24,8 @@ class Post: ManagedObject {
         post.body = body
         post.user = user
         post.conversation = conversation
+        
+        post.images.insert(Image.insertIntoContext(moc, imageName: "fakeimage"))
         
         let now = NSDate()
         conversation.lastUpdated = now
