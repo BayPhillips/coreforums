@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ManagedObjectType: class {
+public protocol ManagedObjectType: class {
     static var entityName: String { get }
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
 }

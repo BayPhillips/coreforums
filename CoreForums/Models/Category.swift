@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Persistence
 
 class Category: ManagedObject {
     @NSManaged var name: String

@@ -9,15 +9,15 @@
 import Foundation
 import CoreData
 
-class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFetchedResultsControllerDelegate, DataProvider {
+public class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFetchedResultsControllerDelegate, DataProvider {
     
-    typealias Object = Delegate.Object
+    public typealias Object = Delegate.Object
     
     private let fetchedResultsController: NSFetchedResultsController
     private weak var delegate: Delegate!
     private var updates: [DataProviderUpdate<Object>] = []
     
-    init(fetchedResultsController: NSFetchedResultsController, delegate: Delegate) {
+    public init(fetchedResultsController: NSFetchedResultsController, delegate: Delegate) {
         self.fetchedResultsController = fetchedResultsController
         self.delegate = delegate
         super.init()
@@ -25,7 +25,7 @@ class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFe
         try! fetchedResultsController.performFetch()
     }
     
-    func objectAtIndexPath(indexPath: NSIndexPath) -> Object {
+    public func objectAtIndexPath(indexPath: NSIndexPath) -> Object {
         guard let result = fetchedResultsController.objectAtIndexPath(indexPath) as? Object else {
             fatalError("Unexpected object returned at \(indexPath)")
         }
@@ -33,16 +33,16 @@ class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFe
         return result
     }
     
-    func numberOfItemsInSection(section: Int) -> Int {
+    public func numberOfItemsInSection(section: Int) -> Int {
         guard let sections = fetchedResultsController.sections?[section] else { return 0 }
         return sections.numberOfObjects
     }
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    public func controllerWillChangeContent(controller: NSFetchedResultsController) {
         updates = []
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
         case .Insert:
             guard let indexPath = newIndexPath else { fatalError("indexPath should not be nil") }
@@ -65,7 +65,7 @@ class FetchedResultsDataProvider<Delegate: DataProviderDelegate>: NSObject, NSFe
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    public func controllerDidChangeContent(controller: NSFetchedResultsController) {
         delegate.dataProviderDidUpdate(updates)
     }
 }

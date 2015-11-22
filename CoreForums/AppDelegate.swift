@@ -8,52 +8,42 @@
 
 import UIKit
 import CoreData
+import Persistence
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var managedObjectContext: NSManagedObjectContext!
+    var privateObjectContext: NSManagedObjectContext!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        managedObjectContext = createCoreForumsContext()
+        createCoreForumsContexts()
         
-        guard let categoriesViewController = window?.rootViewController as? ManagedObjectContextSettable else
+        guard let rootNavigationController = window?.rootViewController as? ManagedObjectContextSettable else
         {
             fatalError("window.rootViewController doesn't adhere to the ManagedObjectContextSettable protocol.")
         }
         
-        categoriesViewController.managedObjectContext = managedObjectContext
+        rootNavigationController.setContextsWithMainThreadContext(managedObjectContext, andPrivateThreadContext: privateObjectContext)
         
         return true
     }
     
     private let forumsStoreUrl = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first!.URLByAppendingPathComponent("CoreForums.forums")
     
-    func createCoreForumsContext() -> NSManagedObjectContext
+    func createCoreForumsContexts() -> Void
     {
-        let bundles: [NSBundle] = [
+        let contexts = CoreDataStack.generateContextsWithClasses([
             Category.self,
             Conversation.self,
             Post.self,
             User.self
-        ].map({ return NSBundle(forClass: $0)})
-        
-        guard let model = NSManagedObjectModel.mergedModelFromBundles(bundles) else {
-            fatalError("Couldn't load model from bundles: \(bundles)")
-        }
-        
-        let options = [
-            NSMigratePersistentStoresAutomaticallyOption: true,
-            NSInferMappingModelAutomaticallyOption: true
-        ]
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-        try! persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: forumsStoreUrl, options: options)
-        
-        let context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        context.persistentStoreCoordinator = persistentStoreCoordinator
-        return context
+        ])
+
+        managedObjectContext = contexts[NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType]
+        privateObjectContext = contexts[NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType]
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -6,7 +6,7 @@
 //  Copyright © 2015 Bay Phillips. All rights reserved.
 //
 
-protocol DataSourceDelegate: class {
+public protocol DataSourceDelegate: class {
     typealias Object
     func cellIdentifierForObject(object: Object) -> String
 }

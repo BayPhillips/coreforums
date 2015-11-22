@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Persistence
 
 class ConversationTableViewCell: UITableViewCell, ConfigurableCell {
     func configureForObject(object: Conversation) {

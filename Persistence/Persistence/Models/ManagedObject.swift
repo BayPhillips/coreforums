@@ -1,5 +1,5 @@
 //
-//  ManagedObjectContextSettable.swift
+//  ManagedObject.swift
 //  CoreForums
 //
 //  Created by Bay Phillips on 11/14/15.
@@ -9,6 +9,6 @@
 import Foundation
 import CoreData
 
-protocol ManagedObjectContextSettable: class {
-    var managedObjectContext: NSManagedObjectContext! { get set }
+public class ManagedObject: NSManagedObject {
+    
 }

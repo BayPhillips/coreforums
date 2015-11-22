@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Persistence
 
 class CategoryTableViewCell: UITableViewCell, ConfigurableCell {
 

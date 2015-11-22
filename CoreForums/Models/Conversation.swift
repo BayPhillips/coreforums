@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Persistence
 
 class Conversation: ManagedObject {
     @NSManaged var title: String

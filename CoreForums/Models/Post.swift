@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Persistence
 
 class Post: ManagedObject {
     @NSManaged var body: String

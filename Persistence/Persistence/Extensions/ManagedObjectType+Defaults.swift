@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-extension ManagedObjectType {
+public extension ManagedObjectType {
     static var defaultSortDescriptors: [NSSortDescriptor] {
         return []
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Persistence
 
 class User: ManagedObject {
     @NSManaged var username: String
