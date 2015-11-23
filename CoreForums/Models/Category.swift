@@ -20,6 +20,15 @@ class Category: ManagedObject {
         category.name = name
         return category
     }
+    
+    var conversationsRequest: NSFetchRequest {
+        get {
+            let request = NSFetchRequest(entityName: Conversation.entityName)
+            request.predicate = NSPredicate(format: "category = %@", self)
+            request.sortDescriptors = Conversation.defaultSortDescriptors
+            return request
+        }
+    }
 }
 
 extension Category: ManagedObjectType {

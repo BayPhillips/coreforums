@@ -20,6 +20,8 @@ class CategoryTableViewCell: UITableViewCell, ConfigurableCell {
 class CategoriesViewController: UITableViewController, ManagedObjectContextSettable {
     
     var managedObjectContext: NSManagedObjectContext!
+    var privateManagedObjectContext: NSManagedObjectContext!
+    
     var dataSource: TableViewDatasource<CategoriesViewController, FetchedResultsDataProvider<CategoriesViewController>, CategoryTableViewCell>!
     
     override func viewDidLoad() {
@@ -44,8 +46,8 @@ class CategoriesViewController: UITableViewController, ManagedObjectContextSetta
         })
         alertController?.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             guard let categoryName = self.alertController?.textFields?.first?.text else { return }
-            self.managedObjectContext.performChanges {
-                Category.insertIntoContext(self.managedObjectContext, name: categoryName)
+            self.privateManagedObjectContext.performChangesOnBackgroundThread {
+                Category.insertIntoContext(self.privateManagedObjectContext, name: categoryName)
             }
         }))
         alertController?.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in

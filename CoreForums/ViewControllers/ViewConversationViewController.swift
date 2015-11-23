@@ -19,6 +19,8 @@ class PostCell: UITableViewCell, ConfigurableCell {
 
 class ViewConversationViewController: UITableViewController, ManagedObjectContextSettable {
     var managedObjectContext: NSManagedObjectContext!
+    var privateManagedObjectContext: NSManagedObjectContext!
+    
     var conversation: Conversation!
     
     var dataSource: TableViewDatasource<ViewConversationViewController, FetchedResultsDataProvider<ViewConversationViewController>, PostCell>!
@@ -50,8 +52,8 @@ class ViewConversationViewController: UITableViewController, ManagedObjectContex
         })
         alertController?.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             guard let message: String = self.alertController?.textFields?.last?.text else { return }
-            self.managedObjectContext.performChanges {
-                Post.insertIntoContext(self.managedObjectContext, body: message, user: User.defaultUser, conversation: self.conversation)
+            self.privateManagedObjectContext.performChangesOnBackgroundThread {
+                Post.insertIntoContext(self.privateManagedObjectContext, body: message, user: User.defaultUser, conversation: self.conversation)
             }
         }))
         alertController?.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in

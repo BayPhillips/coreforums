@@ -20,9 +20,10 @@ class Post: ManagedObject {
     @NSManaged var timeUpdated: NSDate
     
     static func insertIntoContext(moc: NSManagedObjectContext, body: String, user: User, conversation: Conversation) -> Post {
+        let conversation: Conversation = conversation.ensureOnContext(moc)
         let post: Post = moc.insertObject()
         post.body = body
-        post.user = user
+        post.user = user.ensureOnContext(moc)
         post.conversation = conversation
         
         post.images.insert(Image.insertIntoContext(moc, imageName: "fakeimage"))

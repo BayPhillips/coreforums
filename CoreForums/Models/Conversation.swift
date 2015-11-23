@@ -21,10 +21,10 @@ class Conversation: ManagedObject {
     static func insertIntoContext(moc: NSManagedObjectContext, title: String, message: String, category: Category, createdByUser user: User) -> Conversation {
         let conversation: Conversation = moc.insertObject()
         conversation.title = title
-        conversation.category = category
+        conversation.category = category.ensureOnContext(moc)
         let post = Post.insertIntoContext(moc, body: message, user: user, conversation: conversation)
         conversation.posts.insert(post)
-        conversation.creator = user
+        conversation.creator = user.ensureOnContext(moc)
         conversation.dateCreated = NSDate()
         conversation.lastUpdated = NSDate()
         return conversation
@@ -37,6 +37,6 @@ extension Conversation: ManagedObjectType {
     }
 
     static var defaultSortDescriptors: [NSSortDescriptor] {
-        return [NSSortDescriptor(key: "lastUpdated", ascending: false)]
+        return [NSSortDescriptor(key: "lastUpdated", ascending: true)]
     }
 }

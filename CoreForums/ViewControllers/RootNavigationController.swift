@@ -12,7 +12,7 @@ import Persistence
 
 class RootNavigationController: UINavigationController, UINavigationControllerDelegate, ManagedObjectContextSettable {
     var managedObjectContext: NSManagedObjectContext!
-    var privateManagedObjectContext: NSManagedObjectContext?
+    var privateManagedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()

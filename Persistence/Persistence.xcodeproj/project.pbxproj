@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61204F211C02707A00EB3292 /* NSManagedObject+SequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61204F201C02707A00EB3292 /* NSManagedObject+SequenceType.swift */; settings = {ASSET_TAGS = (); }; };
+		61204F241C028AF800EB3292 /* ContextDidSaveNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61204F231C028AF800EB3292 /* ContextDidSaveNotification.swift */; settings = {ASSET_TAGS = (); }; };
 		61605EAC1C01343D0057992E /* Persistence.h in Headers */ = {isa = PBXBuildFile; fileRef = 61605EAB1C01343D0057992E /* Persistence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61605EB31C01343D0057992E /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61605EA81C01343D0057992E /* Persistence.framework */; settings = {ASSET_TAGS = (); }; };
 		61605EB81C01343D0057992E /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61605EB71C01343D0057992E /* PersistenceTests.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		61204F201C02707A00EB3292 /* NSManagedObject+SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+SequenceType.swift"; sourceTree = "<group>"; };
+		61204F231C028AF800EB3292 /* ContextDidSaveNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextDidSaveNotification.swift; sourceTree = "<group>"; };
 		61605EA81C01343D0057992E /* Persistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Persistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61605EAB1C01343D0057992E /* Persistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Persistence.h; sourceTree = "<group>"; };
 		61605EAD1C01343D0057992E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61204F221C028AE800EB3292 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				61204F231C028AF800EB3292 /* ContextDidSaveNotification.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		61605E9E1C01343D0057992E = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +144,7 @@
 			children = (
 				61605EDF1C013AEA0057992E /* ManagedObjectType+Defaults.swift */,
 				61605EE01C013AEA0057992E /* NSManagedObjectContext+ManagedObject.swift */,
+				61204F201C02707A00EB3292 /* NSManagedObject+SequenceType.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,6 +163,7 @@
 		61605EEC1C013B2D0057992E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				61204F221C028AE800EB3292 /* Notifications */,
 				61605EED1C013B400057992E /* ManagedObject.swift */,
 			);
 			path = Models;
@@ -269,8 +283,10 @@
 				61605EC31C01345F0057992E /* CoreDataStack.swift in Sources */,
 				61605EDC1C013AE10057992E /* FetchedResultsDataProvider.swift in Sources */,
 				61605EE81C013AF20057992E /* ConfigurableCell.swift in Sources */,
+				61204F241C028AF800EB3292 /* ContextDidSaveNotification.swift in Sources */,
 				61605EDD1C013AE10057992E /* TableViewDatasource.swift in Sources */,
 				61605EEB1C013AF20057992E /* ManagedObjectType.swift in Sources */,
+				61204F211C02707A00EB3292 /* NSManagedObject+SequenceType.swift in Sources */,
 				61605EE11C013AEA0057992E /* ManagedObjectType+Defaults.swift in Sources */,
 				61605EEA1C013AF20057992E /* ManagedObjectContextSettable.swift in Sources */,
 				61605EDB1C013AE10057992E /* DataProviderDelegate.swift in Sources */,
@@ -459,6 +475,7 @@
 				61605EBE1C01343D0057992E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61605EBF1C01343D0057992E /* Build configuration list for PBXNativeTarget "PersistenceTests" */ = {
 			isa = XCConfigurationList;
@@ -467,6 +484,7 @@
 				61605EC11C01343D0057992E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

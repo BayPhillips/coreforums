@@ -19,6 +19,8 @@ class ConversationTableViewCell: UITableViewCell, ConfigurableCell {
 
 class ConversationsViewController: UITableViewController, ManagedObjectContextSettable {
     var managedObjectContext: NSManagedObjectContext!
+    var privateManagedObjectContext: NSManagedObjectContext!
+    
     var category: Category!
     
     var dataSource: TableViewDatasource<ConversationsViewController, FetchedResultsDataProvider<ConversationsViewController>, ConversationTableViewCell>!
@@ -28,7 +30,7 @@ class ConversationsViewController: UITableViewController, ManagedObjectContextSe
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         
-        let frc = NSFetchedResultsController(fetchRequest: Conversation.sortedFetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: category.conversationsRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         let dataProvider = FetchedResultsDataProvider(fetchedResultsController: frc, delegate: self)
         dataSource = TableViewDatasource(tableView: tableView, dataProvider: dataProvider, delegate: self)
     }
@@ -51,8 +53,8 @@ class ConversationsViewController: UITableViewController, ManagedObjectContextSe
         alertController?.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             guard let conversationTitle: String = self.alertController?.textFields?.first?.text else { return }
             guard let conversationMessage: String = self.alertController?.textFields?.last?.text else { return }
-            self.managedObjectContext.performChanges {
-                Conversation.insertIntoContext(self.managedObjectContext, title: conversationTitle, message: conversationMessage, category: self.category, createdByUser: User.defaultUser)
+            self.privateManagedObjectContext.performChangesOnBackgroundThread {
+                Conversation.insertIntoContext(self.privateManagedObjectContext, title: conversationTitle, message: conversationMessage, category: self.category, createdByUser: User.defaultUser)
             }
         }))
         alertController?.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
