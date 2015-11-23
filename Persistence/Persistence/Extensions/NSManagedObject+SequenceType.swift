@@ -12,9 +12,7 @@ import CoreData
 extension SequenceType where Generator.Element: NSManagedObject {
     func remapToContext(context: NSManagedObjectContext) -> [Generator.Element] {
         return map { unmappedMO in
-            guard unmappedMO.managedObjectContext !== context else { return unmappedMO }
-            guard let object = context.objectWithID(unmappedMO.objectID) as? Generator.Element else { fatalError("Invalid object type") }
-            return object
+            return unmappedMO.ensureOnContext(context)
         }
     }
 }
