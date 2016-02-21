@@ -61,6 +61,30 @@ class ViewConversationViewController: UITableViewController, ManagedObjectContex
         }))
         self.navigationController?.presentViewController(self.alertController!, animated: true, completion: nil)
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let selectedPost: Post = dataSource.selectedObject else {
+            fatalError("Couldn't retrieve post to edit")
+        }
+        alertController = UIAlertController(title: "Edit Post", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController?.addTextFieldWithConfigurationHandler { textField in
+            textField.text = selectedPost.body
+        }
+        alertController?.addAction(UIAlertAction(title: "Edit", style: UIAlertActionStyle.Default, handler: { [weak self] (action) -> Void in
+            guard let newBody = self?.alertController?.textFields?.first?.text else {
+                fatalError("Couldn't get text for edit field")
+            }
+            if newBody != selectedPost.body {
+                self?.privateManagedObjectContext.performChangesOnBackgroundThread { [weak self] in
+                    let post: Post = selectedPost.ensureOnContext((self?.privateManagedObjectContext)!)
+                    post.body = newBody
+                }
+            }
+        }))
+        alertController?.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.navigationController?.presentViewController(alertController!, animated: true, completion: nil)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 }
 
 extension ViewConversationViewController: DataProviderDelegate {

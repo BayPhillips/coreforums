@@ -37,9 +37,6 @@ public class CoreDataStack {
         privateContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         
         CoreDataStack.privateContextMergeNotification = privateContext.addContextDidSaveNotificationObserver { note in
-//            let updates = note.updatedObjects.remapToContext(mainContext)
-//            let inserts = note.insertedObjects.remapToContext(mainContext)
-//            let deletes = note.deletedObjects.remapToContext(mainContext)
             mainContext.performMergeChangesFromContextDidSaveNotification(note)
         }
         

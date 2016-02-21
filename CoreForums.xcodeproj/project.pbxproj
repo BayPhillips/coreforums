@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		612E6A041C7A651D0055D242 /* ConcurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E6A031C7A651D0055D242 /* ConcurrencyHelper.swift */; };
 		614E583B1BF7C1E100103DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E583A1BF7C1E100103DC2 /* AppDelegate.swift */; };
 		614E58401BF7C1E100103DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 614E583E1BF7C1E100103DC2 /* Main.storyboard */; };
 		614E58431BF7C1E100103DC2 /* CoreForums.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 614E58411BF7C1E100103DC2 /* CoreForums.xcdatamodeld */; };
@@ -14,14 +15,14 @@
 		614E58481BF7C1E100103DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 614E58461BF7C1E100103DC2 /* LaunchScreen.storyboard */; };
 		614E58531BF7C1E100103DC2 /* CoreForumsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58521BF7C1E100103DC2 /* CoreForumsTests.swift */; };
 		614E585E1BF7C1E100103DC2 /* CoreForumsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E585D1BF7C1E100103DC2 /* CoreForumsUITests.swift */; };
-		614E586D1BF7C77B00103DC2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E586C1BF7C77B00103DC2 /* Category.swift */; settings = {ASSET_TAGS = (); }; };
-		614E586F1BF7C7D700103DC2 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E586E1BF7C7D700103DC2 /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
-		614E58711BF7C83400103DC2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58701BF7C83400103DC2 /* Post.swift */; settings = {ASSET_TAGS = (); }; };
-		614E58731BF7C85200103DC2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58721BF7C85200103DC2 /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		614E58761BF7C9F300103DC2 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58751BF7C9F300103DC2 /* CategoriesViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		614E58781BF7CA1900103DC2 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58771BF7CA1900103DC2 /* ConversationsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		614E587A1BF7CA4A00103DC2 /* ViewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58791BF7CA4A00103DC2 /* ViewConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		614E58941BF7E94300103DC2 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58931BF7E94300103DC2 /* RootNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		614E586D1BF7C77B00103DC2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E586C1BF7C77B00103DC2 /* Category.swift */; };
+		614E586F1BF7C7D700103DC2 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E586E1BF7C7D700103DC2 /* Conversation.swift */; };
+		614E58711BF7C83400103DC2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58701BF7C83400103DC2 /* Post.swift */; };
+		614E58731BF7C85200103DC2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58721BF7C85200103DC2 /* User.swift */; };
+		614E58761BF7C9F300103DC2 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58751BF7C9F300103DC2 /* CategoriesViewController.swift */; };
+		614E58781BF7CA1900103DC2 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58771BF7CA1900103DC2 /* ConversationsViewController.swift */; };
+		614E587A1BF7CA4A00103DC2 /* ViewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58791BF7CA4A00103DC2 /* ViewConversationViewController.swift */; };
+		614E58941BF7E94300103DC2 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E58931BF7E94300103DC2 /* RootNavigationController.swift */; };
 		61605ED51C0139340057992E /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61605ED41C0139340057992E /* Persistence.framework */; };
 		61605F181C013DFF0057992E /* MediaContent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61605F171C013DFF0057992E /* MediaContent.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		612E6A031C7A651D0055D242 /* ConcurrencyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrencyHelper.swift; sourceTree = "<group>"; };
 		614E58371BF7C1E100103DC2 /* CoreForums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreForums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		614E583A1BF7C1E100103DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		614E583F1BF7C1E100103DC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		612E6A021C7A65120055D242 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				612E6A031C7A651D0055D242 /* ConcurrencyHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		614E582E1BF7C1E100103DC2 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 		614E58391BF7C1E100103DC2 /* CoreForums */ = {
 			isa = PBXGroup;
 			children = (
+				612E6A021C7A65120055D242 /* Helpers */,
 				61605ED61C0139B10057992E /* Frameworks */,
 				614E58741BF7C9E400103DC2 /* ViewControllers */,
 				614E586B1BF7C76600103DC2 /* Models */,
@@ -320,6 +331,7 @@
 				614E58941BF7E94300103DC2 /* RootNavigationController.swift in Sources */,
 				614E58781BF7CA1900103DC2 /* ConversationsViewController.swift in Sources */,
 				614E58761BF7C9F300103DC2 /* CategoriesViewController.swift in Sources */,
+				612E6A041C7A651D0055D242 /* ConcurrencyHelper.swift in Sources */,
 				614E58731BF7C85200103DC2 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

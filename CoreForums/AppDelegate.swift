@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        createCoreForumsContexts()
+        self.createCoreForumsContexts()
+        self.ensureDefaultUserIsCreated()
         
         guard let rootNavigationController = window?.rootViewController as? ManagedObjectContextSettable else
         {
@@ -34,8 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private let forumsStoreUrl = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first!.URLByAppendingPathComponent("CoreForums.forums")
     
-    func createCoreForumsContexts() -> Void
-    {
+    private func createCoreForumsContexts() {
         let contexts = CoreDataStack.generateContextsWithClasses([
             Category.self,
             Conversation.self,
@@ -46,6 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         managedObjectContext = contexts[NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType]
         privateObjectContext = contexts[NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType]
+    }
+    
+    private func ensureDefaultUserIsCreated() {
+        Concurrency.runOnMainThread {
+            let _ = User.defaultUser
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
